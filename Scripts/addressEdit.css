@@ -1,0 +1,44 @@
+.van-cell--center{
+    margin-top: 14px;
+}
+.van-address-edit__buttons .van-button--danger{
+    margin-top: 14px;
+    background: #1989fa;
+    border: none;
+    height:38px;
+    border-radius: 5px;
+}
+.van-address-edit__buttons .van-button--default{
+    margin-top: 14px;
+    background: transparent;
+    box-sizing: border-box;
+    border: 1px solid #1989fa;
+    height:38px;
+    /*font-size: 14px;*/
+    border-radius: 5px;
+    color: #0391ff;
+}
+.van-picker__toolbar{
+    padding: 14px;
+}
+.van-picker__cancel, .van-picker__confirm{
+    font-size: 14px;
+    width:66px;
+    height:32px;
+    line-height: 32px;
+    /*border:0px solid rgba(3,145,255,1);*/
+    padding: 0;
+    border-radius:3px;
+}
+.van-picker__cancel{
+    border:1px solid #0391ff;
+    color: #0391ff;
+    box-sizing: border-box;
+}
+.van-picker__confirm{
+    border: none;
+    background: #0391ff;
+    color: #ffffff;
+}
+
+

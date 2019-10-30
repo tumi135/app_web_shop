@@ -1,0 +1,360 @@
+*{
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    font-family: PingFang SC;
+    -webkit-touch-callout:none;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+input,textarea{
+    -webkit-user-select:auto;
+}
+.wrapper{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0.38rem;
+}
+.header{
+    position: relative;
+    width: 100%;
+    height: 1.17rem;
+}
+.goBack{
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+}
+.goBack>img{
+    width: 0.59rem;
+    height: 0.59rem;
+}
+.header>span{
+    display: block;
+    line-height:1.17rem;
+    height:1.17rem;
+    text-align: center;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 0.48rem;
+}
+.prizesList{
+    /*display: none;*/
+    margin-top: 0.5rem;
+}
+.prizesList li{
+    display: flex;
+    align-items: center;
+    min-height:2.67rem;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0px;
+    box-sizing: border-box;
+}
+.coupons{
+    background-image: url('./images/lfsq_coupon.png');
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+}
+[data-dpr="2"] .coupons{
+    background-image: url('./images/lfsq_coupon@2x.png');
+}
+[data-dpr="3"] .coupons{
+    background-image: url('./images/lfsq_coupon@3x.png');
+}
+.physical{
+    background-image: url('./images/lfsq_prizebackground.png');
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+}
+[data-dpr="2"] .physical{
+    background-image: url('./images/lfsq_prizebackground@2x.png');
+}
+[data-dpr="3"] .physical{
+    background-image: url('./images/lfsq_prizebackground@3x.png');
+}
+.prizesListLeft{
+    display: flex;
+    justify-content: center;
+    width: 2.4rem;
+    text-align: center;
+}
+.prizesListLeft span{
+    font-weight: 600;
+    font-style: normal;
+    font-size:0.61rem;
+    text-align: center;
+    font-family: Microsoft YaHei;
+}
+.prizesListLeft .couponsNum{
+    font-size: 0.82rem;
+}
+[data-dpr="2"] .prizesListLeft .couponsNum{
+    font-size: 0.82rem;
+}
+[data-dpr="2"] .prizesListLeft .couponsNum{
+    font-size: 0.82rem;
+}
+
+.prizesList .activation .prizesListLeft span{
+    color: #EC808D;
+}
+.prizesList .notActivation .prizesListLeft span{
+    color: #7F7F7F;
+}
+.prizesListCenter>p{
+    font-size:0.32rem;
+}
+.prizesListCenter>p>.phone{
+    font-size:0.32rem;
+    display:inline-block;
+    margin-left:0.5rem;
+}
+.prizesListCenter>.prizesListLeftTitle{
+    font-size:0.45rem;
+    font-weight: 600;
+    padding-bottom: 0.2rem;
+}
+/*.notActivationP>p{*/
+/*    color: #7F7F7F;*/
+/*}*/
+.prizesListLeft div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:1.85rem;
+    height:1.53rem;
+    /*background: #000;*/
+}
+.prizesListLeft div img{
+    height: 100%;
+}
+.prizesListLeft div .drum{
+    height: auto;
+    width: 100%;
+}
+.prizesListCenter{
+    flex: 1;
+    margin-left: 0.3rem;
+    min-height: 2.07rem;
+}
+.prizesList li button{
+    /*position: absolute;
+    right: 0.5rem;*/
+    width:1.97rem;
+    height:0.68rem;
+    border-radius:0rem;
+    outline: none;
+    border: none;
+    border-radius: 0.34rem;
+    font-size: 0.37rem;
+    color: white;
+    margin: 0 13px;
+}
+.activation button{
+    background:rgba(3,145,255,1);
+}
+.notActivation button{
+    background: #aaaaaa;
+}
+.noPop{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.noPrizes, .noNetwork{
+    display: none;
+}
+.noPop img{
+    width:4.49rem;
+    height:5.09rem;
+}
+.noPop p{
+    text-align: center;
+    margin-top: 1rem;
+    width:4.23rem;
+    height:0.92rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(216,216,216,1);
+}
+
+
+.bg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+.mask{
+    width: 100%;
+    height: 100%;
+}
+
+.popAddress{
+    display: none;
+}
+.pop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*background:rgba(255,231,199,1);*/
+}
+.popNoNumber{
+    width:7.24rem;
+    height:7.95rem;
+    border-radius:0.5rem;
+}
+.popNoNumber>img{
+    width:7.24rem;
+    height:7.95rem;
+}
+.popNoNumber>div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:7.24rem;
+    height:7.95rem;
+}
+.popNoNumberBtn{
+    position: absolute;
+    left: 2rem;
+    top: 6.5rem;
+    width:2.89rem;
+    height:0.9rem;
+    border-radius:0rem;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.popComment{
+    width:9rem;
+    padding: 0;
+    /*height:7.95rem;*/
+    border-radius:0.5rem;
+}
+.popComment>img{
+    width:9rem;
+    /*height:7.95rem;*/
+}
+.popComment>div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+}
+.popComment button{
+    position: absolute;
+    left: 50%;
+    margin-left: -1.6rem;
+    bottom: 0.7rem;
+    width: 3rem;
+    height: 0.9rem;
+    border-radius: 0rem;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.noPop{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.noPrizes, .noNetwork{
+    display: none;
+}
+.noPop img{
+    width:4.49rem;
+    height:5.09rem;
+}
+.noPop p{
+    text-align: center;
+    margin-top: 1rem;
+    width:4.23rem;
+    height:0.92rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(216,216,216,1);
+}
+.popAddress{
+    width: 7.24rem;
+    background: white;
+    border-radius: 0.5rem;
+}
+.pushAddress, .getAddressIfon{
+    display: none;
+}
+.popAddress>.pushAddress{
+    width: 100%;
+}
+.popAddress>.pushAddress>p, .popAddress>.getAddressIfon>p{
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+.popAddress>.pushAddress>div, .popAddress>.getAddressIfon>div{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popAddress>.pushAddress>div>div{
+    font-size: 0.37rem;
+    text-align: left;
+    width: 100%;
+}
+.popAddress>.pushAddress>div>input, .popAddress>.pushAddress>div>textarea{
+    display: block;
+    width: 100%;
+    height: 1rem;
+    font-size: 0.37rem;
+    border: 1px solid #7F7F7F;
+    margin-top: 0.5rem;
+    max-width: 9999px;
+    max-height: 999999px;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+}
+.popAddress>.pushAddress>div>textarea{
+    min-height: 1rem;
+    height: auto;
+    padding: 0.2rem;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    font-size: 0.37rem;
+}
+.popAddress>.pushAddress>div>button, .popAddress>.getAddressIfon>div>button{
+    outline: none;
+    border: none;
+    width: 3.7rem;
+    height: 0.8rem;
+    background:#0391FF;
+    border-radius: 0.4rem;
+    margin: 0.5rem auto;
+    font-size: 0.37rem;
+    color: white;
+}
+.getAddressIfon>div>div{
+    width: 100%;
+    line-height: 1rem;
+    font-size: 0.37rem;
+}
+.getAddressIfon>div>div>span{
+    font-size: 0.37rem;
+}
+.getAddressIfon>div>div>span:nth-of-type(1){
+    width: 1.9rem;
+    display: inline-block;
+}

@@ -1,0 +1,246 @@
+body{
+    background: #ffffff;
+}
+.goBack{
+    position: fixed;
+    z-index: 99;
+    top: 0.5rem;
+    left: 0.5rem;
+    width:0.69rem;
+    height:0.69rem;
+    background:rgba(181,181,181,0.7);
+    border-radius:50%;
+    padding: 0.07rem;
+    box-sizing: border-box;
+}
+
+.swiper{
+    width: 10rem;
+    height: 10rem;
+    background: #ffffff;
+}
+.van-swipe__track{
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+}
+.swipe-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.h{
+    height: 90%;
+}
+.w{
+    width: 90%;
+}
+
+.goods-content{
+    padding: 0.5rem;
+}
+.goods-content>p{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:#323232;
+    margin-bottom: 0.3rem;
+}
+.price-box>span:nth-of-type(2){
+    font-size:0.35rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    text-decoration:line-through;
+    color:rgba(151,151,151,1);
+}
+.price-box>span:nth-of-type(1){
+    font-size:0.48rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(223,12,12,1);
+}
+.goSpecs{
+    height: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(151,151,151,1);
+    border-bottom: 1px solid rgba(151,151,151,1);
+}
+.goSpecs>span{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.goSpecs>div>span{
+    font-size:0.35rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(151,151,151,1);
+}
+.describe>div{
+    line-height: 0.8rem;
+    height: 0.8rem;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+    padding-left: 0.5rem;
+}
+.describe img{
+    width: 100%;
+}
+.goods-active{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 1.1rem;
+    background: #ffffff;
+    box-shadow: -5px 0px 15px 2px rgba(0,0,0,0.1);
+}
+.goods-active ul{
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.goods-active li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 0.8rem;
+}
+.goods-active li a{
+    list-style: none;
+    display: inline-block;
+    color:rgba(50,50,50,1);
+    text-align: center;
+
+}
+.goods-active li>p{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+}
+.goods-active button{
+    margin-left: 0.8rem;
+    flex: 1;
+    border: 0;
+    outline: 0;
+    border-radius: 0.2rem 0 0 0.2rem;
+    background: #0391FF;
+    font-size:0.48rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+.van-popup__close-icon{
+    font-size: 0.51rem;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.specs-box{
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+.specs-box>p{
+    font-size:0.48rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.specs-center{
+    height: 11rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+
+.specs-box>button{
+    height: 1.07rem;
+    width: 100%;
+    background: #0391FF;
+    font-size:0.48rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    border-radius: 0.2rem;
+    outline: 0;
+    border: 0;
+}
+.specs-detailed{
+    height: 2.93rem;
+}
+.specs-detailed-img{
+    display: inline-block;
+    margin-right: 0.3rem;
+    position: relative;
+    width:2.67rem;
+    height:2.93rem;
+    background:#F6F6F6;
+    border-radius:0.1rem;
+}
+.specs-detailed-img>img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-height: 100%;
+    max-width: 100%;
+}
+.specs-detailed-right{
+    display: inline-block;
+    width: 5.8rem;
+}
+.specs-detailed-right>p{
+    word-wrap:break-word
+}
+.specs-content{
+    margin-top: 0.3rem;
+}
+.tow{
+    display: inline-block;
+    height:0.99rem;
+    background:#F0F0F0;
+    border-radius:0.2rem;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:#323232;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    line-height: 0.99rem;
+    margin-top: 0.3rem;
+}
+.one>.tow:nth-of-type(1){
+    margin-right: 0.3rem;
+}
+.act{
+    background: rgba(64,158,255, 0.5);
+    color: #0391FF;
+}
+.specesName{
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.goodsNum{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+}
+.van-stepper__input{
+    font-size: 0.38rem;
+}
+.van-stepper>button{
+    font-size: 0.38rem;
+}

@@ -1,0 +1,457 @@
+.orderCenter, .van-radio-group, .orderInfo{
+    background: #ffffff;
+    border-radius:0.3rem;
+    padding: 0.3rem 0.5rem;
+    margin-top: 0.3rem;
+    box-sizing: border-box;
+}
+
+.addressInfo{
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 0.2rem 0.2rem;
+    padding: 0.3rem 0.5rem;
+    box-sizing: border-box;
+    background: #ffffff;
+
+}
+.addressInfo>img{
+    width:0.48rem;
+    height: auto;
+    margin-right: 0.5rem;
+}
+.addressInfoRight{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.addressInfoContent{
+    flex: 1;
+    margin-right: 0.3rem;
+}
+.van-icon-arrow{
+    font-size: 0.44rem;
+}
+.blueAdd{
+    display: inline-block;
+    padding: 0.5rem 0.2rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(3,145,255,1);
+}
+.aTop>span{
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.aTop>.van-tag--primary{
+    line-height: 0.37rem;
+    padding: 0 0.1rem;
+    font-size:0.32rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.aTop>.expressText{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.aBottom{
+    margin-top: 0.3rem;
+}
+.aBottom>span{
+    display: inline-block;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(151,151,151,1);
+}
+.orderCenter>p{
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.goodsInfo{
+    margin-top: 0.2rem;
+    display: flex;
+    align-items: flex-start;
+}
+.goodsInfo>img{
+    width:1.76rem;
+    height: auto;
+    margin-right: 0.3rem;
+}
+.goodsInfoRight{
+    flex: 1;
+}
+.goodsInfoRight>div>p:nth-of-type(1){
+    font-size:0.36rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.goodsInfoRight>div>p:nth-of-type(2){
+    margin-top: 0.2rem;
+    font-size:0.34rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(151,151,151,1);
+}
+.goodsInfoRight>p{
+    margin-top: 0.4rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(223,12,12,1);
+}
+.goodsInfoRight>p>.old-price{
+    font-size:0.35rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    text-decoration:line-through;
+    color:rgba(151,151,151,1);
+}
+.coupon{
+    margin-top: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+}
+.coupon>span:nth-of-type(1){
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.coupon>span:nth-of-type(2){
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    /*color:rgba(223,12,12,1);*/
+}
+.coupon>.couponLen{
+    color: #0391FF;
+}
+.coupon>.couponNum{
+    font-size:0.43rem;
+    font-weight:bold;
+    color:rgba(223,12,12,1)
+}
+.customerService{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.2rem 0;
+}
+.van-icon-service-o{
+    font-size: 0.59rem;
+    color: #979797;
+}
+.customerService>.customerServiceSpan{
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(3,145,255,1);
+}
+.van-radio-group{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.payIcon{
+    width: 0.64rem;
+    margin-right: 0.3rem;
+}
+.custom-title{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.van-cell__title{
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0;
+}
+.van-radio__icon{
+    width: 0.59rem;
+    height: 0.59rem;
+}
+.van-radio__icon .van-icon{
+    width:0.59rem;
+    height:0.59rem;
+    font-size: 0.36rem;
+    line-height: 0.59rem;
+    border: 1px solid #8c8c8c;
+}
+.orderInfo>div{
+    display: flex;
+    align-items: center;
+}
+.orderInfo>div:nth-of-type(2){
+    margin-top: 0.3rem;
+}
+.orderInfo>div>.orderInfoCen{
+    flex: 1;
+    margin-left: 0.6rem;
+}
+.orderInfo span{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.copy{
+    border: none;
+    outline: none;
+    background: #ffffff;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(3,145,255,1);
+}
+.van-toast--middle{
+    font-size: 0.4rem;
+    line-height: 0.5rem;
+    padding: 0.5rem;
+    min-width: 2.5rem;
+    /*min-height: 2.5rem;*/
+    border-radius: 0.5rem;
+}
+.van-toast--middle > .van-icon{
+    font-size: 0.8rem;
+}
+.button-box{
+    padding: 1rem 0.5rem;
+    text-align: right;
+}
+.button-box>button{
+    width:2.99rem;
+    height:0.91rem;
+    background:rgba(3,145,255,1);
+    border-radius:0.2rem;
+    border: none;
+    outline: none;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color: white;
+}
+.button-box>.cancelOrder{
+    width:2.99rem;
+    height:0.91rem;
+    border:1px solid rgba(151,151,151,1);
+    border-radius:0.2rem;
+    background: transparent;
+    color:rgba(151,151,151,1);
+    margin-right: 0.5rem;
+}
+.van-dialog{
+    border-radius: 0.3rem;
+    font-size: 0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.van-dialog__header{
+    line-height: 1.2rem;
+}
+.van-dialog__message{
+    line-height: 0.5rem;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+    padding: 0.3rem 1.5rem 0.5rem 1.5rem;
+}
+.van-dialog__footer--buttons{
+    border-top: 1px solid #0391ff;
+}
+.van-dialog__confirm{
+    background: #0391FF;
+}
+.van-button{
+    font-size: 0.37rem;
+    line-height: 0.9rem;
+    height: 0.9rem;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.footer>.heji{
+    flex: 1;
+}
+.heji span{
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.heji .red-heji{
+    color: #DF0C0C;
+}
+.heji .footr-discounte{
+    font-size:0.3rem;
+}
+.footer>button{
+    width:4.1rem;
+    height:1.07rem;
+    background:rgba(3,145,255,1);
+    border-radius:0.3rem 0rem 0rem 0.3rem;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(254,254,254,1);
+    border: none;
+    outline: none;
+}
+
+
+.couponH{
+    text-align: center;
+    font-size:0.48rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+    line-height:1rem;
+}
+
+.coupon_box_content{
+    flex: 1;
+    overflow-y: auto;
+    height: 10rem;
+    padding: 0.5rem;
+}
+.coupon_box_content li{
+    display: flex;
+    align-items: center;
+    min-height:2.67rem;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0px;
+    box-sizing: border-box;
+}
+.coupons{
+    background-image: url('./images/lfsq_coupon@3x.png');
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+}
+
+.prizesListLeft{
+    display: flex;
+    justify-content: center;
+    width: 2.4rem;
+    text-align: center;
+}
+
+.prizesListLeft span{
+    font-weight: 600;
+    font-style: normal;
+    font-size:0.61rem;
+    text-align: center;
+    font-family: Microsoft YaHei;
+}
+.prizesListLeft .couponsNum{
+    font-size: 0.82rem;
+}
+.coupon_box_content .activation .prizesListLeft span{
+    color: #EC808D;
+}
+.coupon_box_content .notActivation .prizesListLeft span{
+    color: #7F7F7F;
+}
+.coupon_box_content .notActivation .prizesListCenter p{
+    color: #7F7F7F;
+}
+.prizesListCenter>p{
+    font-size:0.32rem;
+}
+.prizesListCenter>.prizesListLeftTitle{
+    font-size:0.45rem;
+    font-weight: 600;
+    padding-bottom: 0.2rem;
+}
+.no-tips{
+    margin-top: 0.1rem;
+}
+.no-tips img{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+.no-tips span{
+    vertical-align: super;
+}
+
+.prizesListCenter{
+    flex: 1;
+    margin-left: 0.3rem;
+    min-height: 2.07rem;
+}
+.coupons-right{
+    width:0.9rem;
+    height:0.9rem;
+    margin-right: 0.07rem;
+}
+.coupons-right>img{
+    width: 0.64rem;
+    height: 0.64rem;
+    margin-top: 0.17rem;
+}
+.no_coupon_box{
+    display:none
+}
+.no_coupon_box_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.no_coupon_box_content img{
+    margin-bottom: 0.37rem;
+    margin-top: 0.37rem;
+    width:4.49rem;
+}
+.no_coupon_box_content p{
+    font-size: 0.19rem;
+    text-align: center;
+}
+.no_coupon_box_content p:nth-of-type(2){
+    color: #979797;
+}
+.no_coupon_box_content button{
+    margin-top: 0.2rem;
+    border: none;
+    outline: none;
+    /*width: 1.3rem;*/
+    /*height: 0.5rem;*/
+    border-radius: 0.1rem;
+    background-color: #0391ff;
+    color: white;
+    padding:0.3rem;
+    font-size: 0.3rem;
+}
+.couponBtn{
+    margin: 0.5rem 0.5rem;
+    width:9.00rem;
+    height:1.07rem;
+    background:rgba(3,145,255,1);
+    border-radius:0.3rem;
+    outline: none;
+    border: none;
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(254,254,254,1);
+}

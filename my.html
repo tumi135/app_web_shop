@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/tools.js?v=1.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+    <link rel="stylesheet" href="Scripts/index.css?v=1">
+    <link rel="stylesheet" href="Scripts/base.css">
+    <link rel="stylesheet" href="Scripts/my.css">
+</head>
+<body>
+<div id="my">
+    <div class="my-content">
+        <div class="my-top">
+            <span>我的</span>
+            <div class="my-top-content">
+                <div class="avatar">
+                    <img :src="myInfo.userAvatar">
+                </div>
+                <div class="my-info">
+                    <p>{{myInfo.userName}}</p>
+                    <p>科创账号：{{myInfo.userNumberId}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="campaign">
+            <div>
+                <p>千万豪礼免费~</p>
+                <p>参与活动即可获得抽奖机会呦~</p>
+            </div>
+            <button @click="goCampaign">查看详情</button>
+        </div>
+        <div class="my-list">
+            <van-cell is-link :url="'./addressList.html?userId=' + userId" >
+                <template slot="title">
+                    <img src="./Scripts/images/icon/dingwei1.png" class="slot-img">
+                    <span class="custom-title">收货地址</span>
+                </template>
+            </van-cell>
+            <van-cell is-link :url="'./myCoupons.html?myCoupons=true&UserId=' + userId" >
+                <template slot="title">
+                    <img src="./Scripts/images/icon/youhuiquan.png" class="slot-img">
+                    <span class="custom-title">我的优惠券</span>
+                </template>
+            </van-cell>
+            <van-cell is-link :url="'http://www.kcsoft.com.cn/CustomerServiceH5/index.html?userId=' + userId" >
+                <template slot="title">
+                    <img src="./Scripts/images/icon/kefu_act.png" class="slot-img">
+                    <span class="custom-title">我的客服</span>
+                </template>
+            </van-cell>
+        </div>
+    </div>
+    <van-tabbar v-model="active">
+        <van-tabbar-item name="home" v-on:click="changeTabbar('home')">
+            <span>首页</span>
+            <img slot="icon" slot-scope="props" src="Scripts/images/icon/shouye.png">
+        </van-tabbar-item>
+        <van-tabbar-item name="kefu" v-on:click="changeTabbar('kefu')">
+            <span>客服</span>
+            <img slot="icon" slot-scope="props" src="Scripts/images/icon/kefu.png">
+        </van-tabbar-item>
+        <van-tabbar-item name="dingdan" :info="iconIfo"  v-on:click="changeTabbar('dingdan')">
+            <span>订单</span>
+            <img slot="icon" slot-scope="props" src="Scripts/images/icon/dingdan.png">
+        </van-tabbar-item>
+        <van-tabbar-item name="my">
+            <span>我的</span>
+            <img slot="icon" slot-scope="props" src="Scripts/images/icon/wode_act.png">
+        </van-tabbar-item>
+    </van-tabbar>
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#my',
+        data: function () {
+            return {
+                myInfo: null,
+                active: 'my',
+                iconIfo: 5,
+                userId: ''
+            }
+        },
+        created: function () {
+            var that = this
+            this.userId = this.getUrlParam('userId')
+            $.get('https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/my',{userId: that.userId},function (data) {
+                that.myInfo = data.data
+            })
+        },
+        methods: {
+            getUrlParam: function (paraName) {
+                var url = document.location.toString();
+                var arrObj = url.split("?");
+
+                if (arrObj.length > 1) {
+                    var arrPara = arrObj[1].split("&");
+                    var arr;
+
+                    for (var i = 0; i < arrPara.length; i++) {
+                        arr = arrPara[i].split("=");
+
+                        if (arr != null && arr[0] == paraName) {
+                            return arr[1];
+                        }
+                    }
+                    return "";
+                }
+                else {
+                    return "";
+                }
+            },
+            changeTabbar: function (value) {
+                console.log(value)
+                if(value == 'dingdan'){
+                    window.location = './order.html?userId=' + this.userId
+                }
+                if(value == 'home'){
+                    window.location = './index.html?userId=' + this.userId
+                }
+                if(value == 'kefu'){
+                    window.location = 'http://www.kcsoft.com.cn/CustomerServiceH5/index.html?userId=' + this.userId
+                }
+            },
+            goCampaign:function () {
+                //去抽奖
+            }
+        }
+    })
+
+</script>
+</html>

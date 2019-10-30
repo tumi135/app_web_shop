@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/tools.js?v=1.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+    <link rel="stylesheet" href="Scripts/base.css">
+    <link rel="stylesheet" href="Scripts/search.css">
+
+</head>
+<body>
+<div id="searchIndex">
+    <div class="search-header" v-show="!showSearchList">
+        <form action="/">
+            <van-search
+                    v-model="value"
+                    placeholder="量房神器"
+                    show-action
+                    @search="onSearch"
+                    @cancel="onCancel"
+            />
+        </form>
+    </div>
+    <div class="hot-search" v-show="!showSearchList">
+        <p>热门搜索</p>
+        <ul>
+            <li v-for="(item, index) in hotSearch" v-key="index" @click="onSearch(item)">{{item}}</li>
+        </ul>
+    </div>
+
+
+    <div class="searching-header"  v-show="showSearchList">
+        <van-icon name="arrow-left" @click="goHistory"></van-icon>
+        <van-search placeholder="请输入搜索关键词" v-model="value" />
+    </div>
+    <div class="search-nav" v-show="showSearchList">
+        <div @click="getAll" :class="{'activeSearch': screen == 'all'}">全部</div>
+        <div @click="debounce(getOrder)" :class="{'activeSearch': order != ''}">价格<img src="Scripts/images/icon/paixucopy.png" v-show="order == ''"><img src="Scripts/images/icon/shengxu.png" v-show="(order == 'ascendingOrder')"><img src="Scripts/images/icon/jiangxu.png" v-show="(order == 'descendingOrder')"></div>
+        <div @click="getFitter" :class="{'activeSearch': screen == 'fitter'}">筛选<img src="Scripts/images/icon/shaixuan-tianchong (1).png" v-show="screen !== 'fitter'"><img src="Scripts/images/icon/shaixuan-tianchong.png" v-show="screen == 'fitter'"></div>
+    </div>
+    <div class="search-box" v-show="showSearchList">
+        <ul class="search-list van-hairline--top">
+            <li v-for="(item, index) in searchList" class="van-hairline--bottom"  :class="{'van-hairline--right':index%2 != 1}"  v-key="index">
+                <a :href="'#' + item.id">
+                    <img :src="'./' + item.img">
+                    <p class="hot-item-text">{{item.text}}</p>
+                    <p class="hot-price">
+                        <span class="new-price">￥{{item.newPrice}}</span>
+                        <span class="old-price">￥{{item.oldPrice}}</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+        <van-loading size="0.5rem" vertical v-show="loding">加载中...</van-loading>
+        <van-divider  v-show="end">没有更多商品啦~</van-divider>
+    </div>
+    <div class="pop" v-show="show">
+        <div class="mask"></div>
+        <div class="filter-box">
+            <div class="filter-header">
+                <span>当前已选择：</span>
+                <span v-for="(value, key) in filters" class="filter-header-item">{{value}}</span>
+            </div>
+            <ul class="filter-content">
+                <li>
+                    <p>测量距离</p>
+                    <div @click="changeFilter('distance', $event)">
+                        <span :class="{'act-filter':temporaryFilter.distance == '40m'}">40m</span>
+                        <span :class="{'act-filter':temporaryFilter.distance == '60m'}">60m</span>
+                        <span :class="{'act-filter':temporaryFilter.distance == '70m'}">70m</span>
+                    </div>
+                </li>
+                <li>
+                    <p>产品颜色</p>
+                    <div @click="changeFilter('color', $event)">
+                        <span :class="{'act-filter':temporaryFilter.color == '黑色'}">黑色</span>
+                        <span :class="{'act-filter':temporaryFilter.color == '蓝色'}">蓝色</span>
+                        <span :class="{'act-filter':temporaryFilter.color == '绿色'}">绿色</span>
+                    </div>
+                </li>
+                <li>
+                    <p>语音版本</p>
+                    <div @click="changeFilter('video', $event)">
+                        <span :class="{'act-filter':temporaryFilter.video == '硬件报读'}">硬件报读</span>
+                        <span :class="{'act-filter':temporaryFilter.video == '软件报读'}">软件报读</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="filter-footer">
+                <div @click="reset">重置</div>
+                <div @click="goFilter">确定</div>
+            </div>
+            <div class="close" @click="goClose">
+                <img src="Scripts/images/icon/close.png">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#searchIndex',
+        data: function () {
+            return {
+                show: false,
+                screen: 'all',//all全部，fitter筛选
+                value: '',
+                order: '',//ascendingOrder升序，descendingOrder降序，
+                getGoods: true,//是否可以请求数据
+                filters:{
+                    color: '',
+                    distance: '',
+                    video: ''
+                },
+                temporaryFilter:{
+                    color: '',
+                    distance: '',
+                    video: ''
+                },
+                hotSearch: ['量房神器', '激光测距仪', '测量工具', '60米蓝色激光测量仪'],
+                searchList: [],
+                searchSuccess: false,
+                page: 1,
+                pageSize: 8,
+                end: false,
+                loding: false,
+                showSearchList: false
+            }
+        },
+        mounted() {
+            //监听滚动
+            window.addEventListener('scroll', () => {
+                this.handleScroll();
+            });
+            //初始加载数据, 热门关键词
+
+        },
+        methods: {
+            handleScroll() {
+                var that = this;
+                //判断滚动到底部
+                var dpr = $('html').attr('data-dpr')
+                if(!dpr){
+                    dpr = 1
+                }
+                var sH = Math.floor(document.body.scrollHeight/dpr)
+                if (document.documentElement.scrollTop + 100 >= sH - window.screen.availHeight ) { //滚动高度>=页面高度-屏幕高度
+                    this.getList()
+                }
+            },
+            getList: function() {
+                var that = this
+                if(!that.searchSuccess){
+                    that.searchSuccess = true
+                    that.loding = true
+                    console.log(999)
+                    $.get('https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/searchh',{'value': that.value,'page':that.page, 'pageSize':that.pageSize, 'order': that.order, 'color': that.filters.color, 'distance': that.filters.distance, 'video': that.filters.video},function (data) {
+                        that.searchList.push.apply(that.searchList, data.data.userInfo)
+                        if(data.data.userInfo.length == that.pageSize){
+                            that.page += 1
+                            that.searchSuccess = false
+                        }else {
+                            that.end = true
+                        }
+                        that.loding = false
+                    })
+                }
+
+            },
+            onSearch: function (val) {
+                console.log(987)
+                this.value = val
+                this.searchList = []
+                this.page = 1
+                this.searchSuccess = false
+                this.showSearchList = true
+                //请求数据
+                setTimeout(() => {
+                    this.getList()
+                }, 300)
+            },
+            onCancel: function () {
+                this.value = ''
+            },
+            goHistory: function () {
+                window.history.go(-1)
+            },
+            getAll: function () {
+                if(this.screen != 'all'){
+                    this.filters = {
+                        color: '',
+                        distance: '',
+                        video: ''
+                    }
+                    this.temporaryFilter = {
+                        color: '',
+                        distance: '',
+                        video: ''
+                    }
+                    this.page = 1
+                    this.searchList = []
+                    this.searchSuccess = false
+                    //请求数据
+                    setTimeout(() => {
+                        this.getList()
+                    }, 300)
+                    this.screen = 'all'
+                }else {
+
+                }
+            },
+            debounce: function (fn){
+                var that = this
+                if(that.timer != null){
+                    clearTimeout(that.timer)
+                }
+                that.timer = setTimeout(function () {
+                    fn.apply(that)
+                },500)
+            },
+            getOrder: function () {
+                if(this.order != 'ascendingOrder' || this.order == '' ){
+                    //请求数据
+                    this.page = 1
+                    this.searchList = []
+                    this.searchSuccess = false
+                    this.order = 'ascendingOrder'
+                    setTimeout(() => {
+                        this.getList()
+                    }, 300)
+
+                }else if(this.order != 'descendingOrder'){
+                    //请求数据
+                    this.order = 'descendingOrder'
+                    this.page = 1
+                    this.searchSuccess = false
+                    this.searchList = []
+                    setTimeout(() => {
+                        this.getList()
+                    }, 300)
+
+                }
+            },
+            getFitter: function () {
+                if(this.screen != 'fitter'){
+                    this.screen = 'fitter'
+                }
+                this.show = true
+            },
+            //改变筛选对象
+            changeFilter: function (key, e) {
+                if (e.target.nodeName.toLowerCase() == "span") {
+                    var nowValue = e.target.innerText
+                    if (this.temporaryFilter[key] == nowValue) {
+                        this.temporaryFilter[key] = ''
+                    } else {
+                        this.temporaryFilter[key] = nowValue
+                    }
+                }
+            },
+            //重置
+            reset: function () {
+                this.filters = {
+                    color: '',
+                    distance: '',
+                    video: ''
+                }
+                this.temporaryFilter = {
+                    color: '',
+                    distance: '',
+                    video: ''
+                }
+                //请求数据
+                this.searchList = []
+                this.page = 1
+                this.searchSuccess = false
+                setTimeout(() => {
+                    this.getList()
+                }, 300)
+                this.show = false
+            },
+            //确定筛选
+            goFilter: function () {
+                this.filters = JSON.parse(JSON.stringify(this.temporaryFilter))
+                //请求数据
+                this.searchList = []
+                this.page = 1
+                this.searchSuccess = false
+                setTimeout(() => {
+                    this.getList()
+                }, 300)
+                this.show=false
+            },
+            goClose: function () {
+                this.show=false
+                this.temporaryFilter = JSON.parse(JSON.stringify(this.filters))
+
+            }
+        }
+    })
+
+</script>
+</html>

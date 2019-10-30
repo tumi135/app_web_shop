@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
+    <title>我的奖品</title>
+    <link href="./Scripts/prizesList.css" rel="stylesheet" />
+    <script src="./Scripts/jquery-2.2.3.min.js"></script>
+    <script src="./Scripts/tools.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="prizesList">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="noPrizes noPop">
+        <img src="./Scripts/images/lfsq_noprize@3x.png">
+        <p>空空如也，赶快去抽奖 试试手气吧~</p>
+    </div>
+    <div class="noNetwork noPop">
+        <img src="./Scripts/images/lfsq_nonetwork@3x.png">
+        <p>网络出错，请您检查手机网络</p>
+    </div>
+</div>
+<div class="bg">
+    <div class="mask"></div>
+    <div class="pop popAddress">
+        <div class="pushAddress">
+            <p>收货地址</p>
+            <div>
+                <div>请完善您的收货信息：</div>
+                <input id="personName" placeholder="请填写联系人姓名">
+                <input type="number" id="personPhone" placeholder="请填写联系人电话">
+                <textarea id="personAddress" placeholder="请填写详细地址"></textarea>
+                <button id="postAddress">确定</button>
+            </div>
+        </div>
+        <div class="getAddressIfon">
+            <p>领取成功</p>
+            <div>
+                <div>您的收货信息：</div>
+                <div><span>联系人</span><span class="ifoName">假数据</span></div>
+                <div><span>联系电话</span><span class="ifoPhone">1576765846</span></div>
+                <div><span>收货地址</span><span class="ifoAddress">广东省广州市天河区店铺是可是可是15号</span></div>
+                <button id="addressIfoBtn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./Scripts/prizesList.js"></script>
+</body>
+</html>
+

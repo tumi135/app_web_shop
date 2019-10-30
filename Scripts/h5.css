@@ -1,0 +1,638 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    font-family: PingFangSC-Medium,
+
+}
+.content-wrap{
+    background-color: #F2F2F2;
+}
+.shop-header{
+    background-color:white;
+    padding:10px 20px;
+    margin-bottom:6px;
+    position:relative;
+}
+.shop-header-title{
+    color:#323232;
+    font-size:20px;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+    height:28px;
+    line-height:28px;
+}
+.shop-header-text{
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(112,112,112,1);
+    line-height:20px;
+    margin-bottom:12px;
+    margin-top:5px;
+}
+.kefu{
+    display:inline-block;
+    text-decoration:none;
+    position:absolute;
+    right:20px;
+    top:0;
+}
+.kefu_img{
+    width:50px;
+    height:63px;
+}
+.remaining-wrap{
+    height:30px;
+    line-height:25px;
+}
+.remaining-text{
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(50,50,50,1);
+}
+.remaining-icon{
+    width:24px;
+    height:24px;
+    vertical-align: top;
+}
+.remaining-num{
+    color:#D31919;
+    vertical-align: top;
+    font-size:18px;
+}
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav li{
+    flex: 1;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+.chose-nav{
+    font-size: 20px;
+    font-weight: 600;
+    color: #409eff;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #409eff;
+}
+
+.shop-header-list{
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items:center;
+    border-radius:8px;
+    border:1px solid rgba(221,221,221,1);
+    padding:10px 20px;
+    box-sizing:border-box;
+    margin-bottom:18px;
+    position:relative;
+}
+.header-list-bgcolor{
+    background:rgba(255,246,232,1);
+    border:1px solid rgba(252,202,126,1);
+}
+.shop-header-recommendIcon{
+    width:22px;
+    height:22px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.shop-header-left{
+    flex:1;
+}
+.shop-header-price{
+    font-size:12px;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    width:70px;
+    height:20px;
+    background:rgba(211,25,25,1);
+    border-radius:10px;
+    margin-left:10px;
+    padding:3px 6px;
+}
+.shop-header-name,.shop-header-datail{
+    height:30px;
+    line-height:30px;
+}
+.shop-header-name{
+    font-size:18px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(50,50,50,1);
+}
+.shop-header-datail{
+    font-size:12px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(151,151,151,1);
+}
+.shop-header-right{
+    font-size:20px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(147,100,29,1);
+    text-align:right;
+}
+.Original-price{
+    font-size:10px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color: #323232;
+    text-decoration:line-through;
+}
+
+.shop-header-img{
+    height:30px;
+    line-height:30px;
+    margin-bottom:8px;
+    flex:1;
+}
+.shop-header-icon{
+    width:24px;
+    height:24px;
+    margin-top:3px;
+}
+.shop-header-money{
+    vertical-align:top;
+    font-size:15px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(147,100,29,1);
+}
+.member-privilege{
+    padding:15px 32px 20px 32px;
+    box-sizing: border-box;
+    background-color: white;
+    text-align:center;
+
+}
+.member-privilege-title{
+    margin-bottom:15px;
+}
+.member-privilege-img{
+    width:100%;
+    height:100%;
+}
+.gift-information-wrap{
+    text-align:center;
+    background-color: white;
+    padding-bottom:12px;
+}
+
+.imgbg{
+    position: relative;
+    width: 317px;
+    height: 270px;
+    margin: 0 auto;
+    background-image: url('images/lfsq_backgroundofgifts.png');
+    background-size: cover;
+}
+.imgbg .gift01{
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 91px;
+}
+.imgbg .gift02{
+    display: none;
+    position: absolute;
+    bottom: 62px;
+    left: 73px;
+}
+
+.Purchase-Notes{
+    padding:12px 20px;
+    background: white;
+    margin-bottom:50px;
+
+}
+.Purchase-Notes-title{
+    border-top-width:1px;
+    border-top-style:solid;
+    border-top-color:rgba(242,242,242,1);
+    font-size:20px;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+    padding:12px 0;
+}
+.Purchase-Notes-text{
+    color:#707070;
+    font-size:14px;
+    line-height:24px;
+}
+.fixed-button-wrap{
+    width:100%;
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    background: white;
+    height:60px;
+    line-height:60px;
+    padding:0 20px;
+    position:fixed;
+    bottom:0;
+    left:0;
+    box-sizing:border-box;
+    box-shadow: #F2F2F2 0px 0px 24px 5px;
+}
+.fixed-button-left{
+    flex:1;
+}
+.fixed-button-right{
+    width:130px;
+    height:40px;
+    background:rgba(255,186,40,1);
+    border-radius:20px;
+    text-align:center;
+    vertical-align:top;
+    margin-top:10px;
+    border:none;
+    color:#855206;
+    font-size:17px;
+}
+.fixed-button-right:focus{outline:0;}
+.sum{
+    font-size:16px;
+    color:#323232;
+    vertical-align:top;
+    margin-top:5px;
+}
+.sum-price{
+    font-size:24px;
+    color:#855206;
+}
+
+
+/*支付结果*/
+.pay-content-wrap{
+    width:100%;
+    text-align:center;
+}
+.pay-result-wrap{
+    margin:62px 0 10px;
+    display:none;
+}
+.pay-result-icon{
+    width:90px;
+    height:90px;
+}
+.pay-result-title{
+    height:28px;
+    font-size:20px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(50,50,50,1);
+    line-height:28px;
+}
+.pay-result-text{
+    padding:0 47px;
+    height:40px;
+    font-size:14px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(151,151,151,1);
+    line-height:20px;
+    margin-bottom:30px;
+    display:none;
+}
+.pay-result-button{
+    width:200px;
+    height:44px;
+    line-height:44px;
+    border-radius:22px;
+    border:1px solid rgba(221,221,221,1);
+    margin:0 auto;
+    color:rgba(151,151,151,1);
+    margin-bottom:30px;
+}
+.pay-question{
+    font-size:16px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(151,151,151,1);
+}
+.yellow-text{
+    color:#FFAD00;
+    text-decoration:none;
+}
+
+.shop-header-rightIcon{
+    display:inline-block;
+    vertical-align: top;
+    margin-top:9px;
+}
+.give-wrap{
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+.gift-infor-title-text{
+    font-size:20px;
+    color:#93641D;
+    margin-bottom:20px;
+}
+a{
+    text-decoration:none;
+
+}
+.detail-xiqing-wrap{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+.shop-header-xiqing{
+    display:inline-block;
+    font-size:15px;
+    vertical-align: top;
+    color: rgba(50,50,50,1);
+}
+/*.show-line{
+	height: 4px;
+    background-color: #F2F2F2;
+    margin: 0 -20px;
+    box-shadow: #F2F2F2 0px 0px 24px 5px;
+}*/
+.fixed-button-icon{
+    font-size: 24px;
+    color: #855206;
+}
+#vip-one-giftImg{
+    display:none;
+}
+
+/*转动*/
+.loading-Mask{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background-color: rgba(255, 255, 255, 1);
+    /*display:none;*/
+}
+.loading-wrap{
+    position:fixed;
+    top:27%;
+    z-index:9999;
+    /*display:none;*/
+}
+.loading-img{
+    width:100%;
+    height:100%;
+
+}
+
+/*详情*/
+.chose-goods{
+    position: fixed;
+    display: block;
+    bottom: 60px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #fef5e7;
+    font-size: 12px;
+    padding: 5px 0;
+}
+.chose-goods>div{
+    display: none;
+}
+.goods-details{
+    margin-right: 20px;
+    float: right;
+    color: #0391FF;
+}
+.goods-details img{
+    width: 10px;
+    height: 10px;
+    margin-left: 6px;
+}
+.chose-goods span{
+    margin-left: 20px;
+}
+
+/*优惠券*/
+.coupon{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.coupon .pay-header-right{
+    width: 70px;
+    margin: 0;
+    line-height: 44px;
+    height: 44px;
+    font-size: 14px;
+}
+.coupon .pay-header-right .go_coupon{
+    color: #0391FF;
+    text-align: right;
+}
+.coupon .pay-header-right .not_go_coupon{
+    /*color: #0391FF;*/
+    text-align: right;
+}
+.coupon .pay-header-right img{
+    width: 12px;
+    height: 12px;
+}
+
+.coupon_pop{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.coupon_box, .no_coupon_box{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    padding: 0rem 0.38rem;
+    box-sizing: border-box;
+}
+.coupon_box_header{
+    position: relative;
+    height: 68px;
+}
+.coupon_box_header p{
+    text-align: center;
+    font-size: 18px;
+    line-height: 68px;
+}
+.close{
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 38px;
+    height: 38px;
+}
+.close img{
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
+.coupon_box__floot{
+    height: 60px;
+    padding-top: 15px;
+
+}
+.coupon_box__floot_button{
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #feb331;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #93641D;
+}
+
+
+.coupon_box_content{
+    flex: 1;
+    overflow-y: auto;
+}
+.coupon_box_content li{
+    display: flex;
+    align-items: center;
+    min-height:2.67rem;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0px;
+    box-sizing: border-box;
+}
+.coupons{
+    background-image: url('../img/lfsq_coupon@3x.png');
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+}
+
+.prizesListLeft{
+    display: flex;
+    justify-content: center;
+    width: 2.4rem;
+    text-align: center;
+}
+
+.prizesListLeft span{
+    font-weight: 600;
+    font-style: normal;
+    font-size:0.61rem;
+    text-align: center;
+    font-family: Microsoft YaHei;
+}
+.prizesListLeft .couponsNum{
+    font-size: 0.82rem;
+}
+.coupon_box_content .activation .prizesListLeft span{
+    color: #EC808D;
+}
+.coupon_box_content .notActivation .prizesListLeft span{
+    color: #7F7F7F;
+}
+.coupon_box_content .notActivation .prizesListCenter p{
+    color: #7F7F7F;
+}
+.prizesListCenter>p{
+    font-size:0.32rem;
+}
+.prizesListCenter>.prizesListLeftTitle{
+    font-size:0.45rem;;
+    font-weight: 600;
+    padding-bottom: 0.2rem;
+}
+.no-tips{
+    margin-top: 0.1rem;
+}
+.no-tips img{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+.no-tips span{
+    vertical-align: super;
+}
+
+.prizesListCenter{
+    flex: 1;
+    margin-left: 0.3rem;
+    min-height: 2.07rem;
+}
+.coupons-right{
+    width:36px;
+    height:36px;
+    margin-right: 5px;
+}
+.coupons-right>img{
+    width: 24px;
+    height: 24px;
+    margin-top: 6px;
+}
+
+.no_coupon_box_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.no_coupon_box_content img{
+    margin-bottom: 28px;
+    margin-top: 28px;
+    width:4.49rem;
+}
+.no_coupon_box_content p{
+    font-size: 14px;
+    text-align: center;
+}
+.no_coupon_box_content p:nth-of-type(2){
+    color: #979797;
+}
+.no_coupon_box_content button{
+    margin-top: 15px;
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 34px;
+    border-radius: 5px;
+    background-color: #0391ff;
+    color: white;
+}
+
+
+

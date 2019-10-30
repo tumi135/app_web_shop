@@ -1,0 +1,64 @@
+.addressList>ul{
+    padding-bottom: 80px;
+}
+.addressItem{
+    background:rgba(255,255,255,1);
+    border-radius:12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+.addressItem>img{
+    margin-right: 16px;
+    width: 18px;
+}
+.itemCenter{
+    flex: 1;
+    margin-right: 4px;
+}
+.itemName>span{
+    font-size:18px;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.itemName>.van-tag--primary{
+    font-size: 12px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.itemCenter>p:nth-of-type(1){
+    padding: 6px 0;
+    font-size:14px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(151,151,151,1);
+}
+.itemCenter>p:nth-of-type(2){
+    font-size:16px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(50,50,50,1);
+}
+.itemRight{
+    padding: 12px;
+}
+.addAddress{
+    position: fixed;
+    left: 5%;
+    bottom: 0px;
+    width: 90%;
+    margin: 16px 0px;
+    height: 40px;
+    background:rgba(3,145,255,1);
+    border-radius:8px;
+    font-size:16px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(254,254,254,1);
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}

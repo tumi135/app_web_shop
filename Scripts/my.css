@@ -1,0 +1,107 @@
+.my-content{
+    padding-bottom: 1.5rem;
+}
+.my-top{
+    position: relative;
+    height:4.91rem;
+    background: #3190e8;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+.my-top>span{
+    font-size:0.64rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.my-top-content{
+    position: absolute;
+    top: 2.3rem;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.3rem;
+    box-sizing: border-box;
+    width:9.07rem;
+    background: #ffffff;
+    border-radius: 0.3rem;
+}
+.avatar{
+    width:1.73rem;
+    height:1.73rem;
+    background:rgba(176,224,255,1);
+    background-image: url('./images/icon/wode.png');
+    background-size: 100% 100%;
+    border-radius:50%;
+    overflow: hidden;
+}
+.avatar>img{
+    width:1.73rem;
+    height:1.73rem;
+    border-radius:50%;
+    overflow: hidden;
+}
+.my-info{
+    flex: 1;
+    margin-left: 0.5rem;
+}
+.my-info>p:nth-of-type(1){
+    font-size:0.64rem;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(50,50,50,1);
+}
+.my-info>p:nth-of-type(2){
+    margin-top: 0.3rem;
+    font-size:0.37rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(151,151,151,1);
+}
+.campaign{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width:9rem;
+    height:2.51rem;
+    background:linear-gradient(90deg,rgba(255,78,56,1) 0%,rgba(253,108,79,1) 100%);
+    border-radius:0.5rem;
+    margin-top: 0.8rem;
+    margin-left: 0.5rem;
+}
+.campaign>div{
+    /*flex: 1;*/
+}
+.campaign>div>p:nth-of-type(1){
+    font-size:0.43rem;
+    font-family:PingFang SC;
+    font-weight:800;
+    color:rgba(255,255,255,1);
+}
+.campaign>div>p:nth-of-type(2){
+    margin-top: 0.3rem;
+    font-size:0.35rem;
+    font-family:PingFang SC;
+    font-weight:800;
+    color:rgba(255,255,255,1);
+}
+.campaign>button{
+    margin-right: 0.3rem;
+    width:1.91rem;
+    height:0.7rem;
+    background:rgba(255,255,255,1);
+    border-radius:0.35rem;
+    font-size:0.35rem;
+    font-family:PingFang SC;
+    font-weight:800;
+    color:rgba(250,102,76,1);
+    border: none;
+    outline: none;
+}
+.my-list{
+    margin-top: 0.5rem;
+}
+.slot-img{
+    margin-right: 0.3rem;
+    width:0.67rem;
+    height:0.67rem;
+}

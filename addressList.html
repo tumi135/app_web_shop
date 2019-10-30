@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+    <link rel="stylesheet" href="Scripts/base.css">
+    <link rel="stylesheet" href="Scripts/addressList.css">
+</head>
+<body>
+<div id="addressList">
+    <ul>
+        <li class="addressItem" v-for="(item, index) in addressList" v-key="item.id" @click="selectAddress(index)">
+            <img src="./Scripts/images/icon/dingwei.png">
+            <div class="itemCenter">
+                <div class="itemName">
+                    <van-tag type="primary" v-show="item.isDefault">默认</van-tag>
+                    <span>{{item.name}}</span>
+                </div>
+                <p>{{item.tel}}</p>
+                <p>{{item.province}}{{item.city}}{{item.county}}{{item.addressDetail}}</p>
+            </div>
+            <div class="itemRight" @click.stop="editAddress(item)">
+                <van-icon name="edit" />
+            </div>
+        </li>
+    </ul>
+    <button @click="addAddress" class="addAddress">新增地址</button>
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#addressList',
+        data: function () {
+            return {
+                addressList: [],
+                userId: '',
+                sendAddress: false,
+                orderId: '',
+                goodsId: ''
+            }
+        },
+        created: function (){
+            this.userId = this.getUrlParam('userId')
+            this.sendAddress = this.getUrlParam('sendAddress')
+            this.orderId = this.getUrlParam('orderId')
+            this.goodsId = this.getUrlParam('goodsId')
+
+            this.getInfo()
+        },
+        methods: {
+            getUrlParam: function (paraName) {
+                var url = document.location.toString();
+                var arrObj = url.split("?");
+
+                if (arrObj.length > 1) {
+                    var arrPara = arrObj[1].split("&");
+                    var arr;
+
+                    for (var i = 0; i < arrPara.length; i++) {
+                        arr = arrPara[i].split("=");
+
+                        if (arr != null && arr[0] == paraName) {
+                            return arr[1];
+                        }
+                    }
+                    return "";
+                }
+                else {
+                    return "";
+                }
+            },
+            getInfo: function () {
+                var that = this
+                $.get("https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/addressList", {userId: that.userId},function (data) {
+                    that.addressList = JSON.parse(JSON.stringify(data.data))
+                    data.data.forEach(function (item,index) {
+                        if(item.isDefault){
+                            that.addressList.splice(index,1)
+                            that.addressList.unshift(item)
+                        }
+                    })
+
+                })
+            },
+            addAddress: function () {
+                    window.location = './addAddress.html?orderId='+ this.orderId + '&userId=' + this.userId + '&goodsId=' + this.goodsId
+            },
+            editAddress: function (item) {
+                console.log(item)
+                window.location = './AddressEdit.html?orderId='+ this.orderId + '&userId=' + this.userId + '&addressId=' + item.id
+            },
+            selectAddress:function (index) {
+                if(this.orderId){
+                    var sendAddress = JSON.stringify(this.addressList[index])
+                    sessionStorage.setItem("sendAddress", sendAddress);
+                    window.location = './orderDetails.html?orderId='+ this.orderId + '&userId=' + this.userId + '&sendAddress=true'
+                }else if (this.goodsId) {
+                    var sendAddress = JSON.stringify(this.addressList[index])
+                    sessionStorage.setItem("sendAddress", sendAddress);
+                    window.location = './settlement.html?goodsId='+ this.goodsId + '&userId=' + this.userId + '&sendAddress=true'
+                }
+            }
+        },
+
+    })
+
+</script>
+</html>
+

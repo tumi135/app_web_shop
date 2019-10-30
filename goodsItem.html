@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/tools.js?v=1.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+    <link rel="stylesheet" href="Scripts/base.css">
+    <link rel="stylesheet" href="Scripts/goodsItem.css">
+</head>
+<body>
+<div id="goodsItem">
+    <div class="goBack" @click="goBack">
+        <van-icon name="arrow-left" size="0.5rem" color="#ffffff"/>
+    </div>
+    <div class="swiper">
+        <van-swipe :autoplay="3000" indicator-color="#434548">
+            <van-swipe-item  v-for="item in swiperImg" >
+                <img class="swipe-img" :src="item.src" :class="{'h': item.proportion == 'h','w': item.proportion == 'w'}">
+            </van-swipe-item>
+        </van-swipe>
+    </div>
+    <div class="goods-content">
+        <p>{{goodsTitle}}</p>
+        <div class="price-box">
+            <span>￥{{newPrice}}</span>
+            <span>￥{{oldPrice}}</span>
+        </div>
+    </div>
+    <div class="goSpecs">
+        <span>规格</span>
+        <div @click="goSpecs">
+            <span>选择规格</span>
+            <van-icon name="arrow" size="0.35rem" color="#979797" />
+        </div>
+    </div>
+    <div class="describe">
+        <div>商品描述</div>
+        <ul>
+            <li v-for="item in describeImg">
+                <img  :src="item">
+            </li>
+        </ul>
+    </div>
+    <div class="goods-active">
+        <ul>
+            <li>
+                <a :href="'./index.html?userId=' + userId">
+                    <van-icon name="wap-home-o" size="0.5rem" color="#0391FF"></van-icon>
+                    <p>首页</p>
+                </a>
+            </li>
+            <li>
+                <a :href="'http://www.kcsoft.com.cn/CustomerServiceH5/index.html?userId=' + userId">
+                    <van-icon name="service-o" size="0.5rem" color="#0391FF" ></van-icon>
+                    <p>客服</p>
+                </a>
+            </li>
+        </ul>
+        <button @click="pay">立即购买</button>
+    </div>
+    <van-popup
+            v-model="show"
+            closeable
+            position="bottom"
+            :style="{ height: '14.3rem' }"
+            round
+    >
+        <div class="specs-box">
+            <p>款式规格</p>
+            <div class="specs-center">
+                <div class="specs-detailed">
+                    <div class="specs-detailed-img">
+                        <img :src="mySpecs.img?mySpecs.img:specsObj[0].img">
+                    </div>
+                    <div class="specs-detailed-right">
+                        <div class="price-box">
+                            <span>￥{{mySpecs.newPrice ? mySpecs.newPrice : specsObj[0].newPrice}}</span>
+                            <span>￥{{mySpecs.oldPrice ? mySpecs.oldPrice : specsObj[0].oldPrice}}</span>
+                        </div>
+                        <p>已选择：{{mySpecs.text}}</p>
+                    </div>
+                </div>
+                <div class="specs-content">
+                    <p class="specesName">颜色</p>
+                    <div class="specs-content-list">
+                        <div class="one" v-for="index in Math.ceil(specsObj.length/2)">
+                            <div class="tow" v-for="(item, i) in specsObj.slice(index*2 - 2,index*2)"  :class="{'act': nowIndex == (index*2 - 1 + i)}" @click="selectSpecs((index*2 - 1 + i))">{{item.text}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goodsNum">
+                    <span class="specesName">数量</span>
+                    <van-stepper v-model="num" min="1" max="999" input-width="0.7rem" button-size="0.7rem" />
+                </div>
+            </div>
+            <button @click="pay">确定购买</button>
+        </div>
+    </van-popup>
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#goodsItem',
+        data: function () {
+            return {
+                userId: '',
+                goodsId: '',
+                goodsTitle: '科创量房神器kc100激光测距仪精度±1.5mm现在最低',
+                newPrice: '888.00',
+                oldPrice: '999.00',
+                swiperImg: [],
+                describeImg: ["Scripts/images/vip-detail-02.jpg"],
+                specsObj: [
+                    {
+                        id: '01',
+                        img: "Scripts/images/greenrangefinder@3x.png",
+                        text: "蓝牙款60+3专业版",
+                        newPrice: '666.00',
+                        oldPrice: '988.00',
+                    },
+                    {
+                        id: '02',
+                        img: "Scripts/images/greenrangefinder@3x.png",
+                        text: "蓝牙款60+3专业版",
+                        newPrice: '700.00',
+                        oldPrice: '999.00',
+                    },
+                    {
+                        id: '03',
+                        img: "Scripts/images/laserdominance@3x.png",
+                        text: "蓝牙款60+3专业版（PDF+CAD）",
+                        newPrice: '898.00',
+                        oldPrice: '999.00',
+                    },
+                    {
+                        id: '04',
+                        img: "Scripts/images/greenrangefinder@3x.png",
+                        text: "蓝牙款60+3专业版（PDF+CAD）",
+                        newPrice: '888.00',
+                        oldPrice: '999.00',
+                    }
+                ],
+                mySpecs: {
+
+                },
+                nowIndex: '',
+                num: 1,
+                show: false
+
+            }
+        },
+        mounted() {
+            this.goodsId = this.getUrlParam('goodsId')
+            this.userId = this.getUrlParam('userId')
+            var imgs = ["Scripts/images/greenrangefinder@3x.png","Scripts/images/laserdominance@3x.png","Scripts/images/hollowdrumhammer@3x.png"]
+            var that = this
+            imgs.forEach(function (item, index) {
+                let img = new Image()
+                let imgObj = {}
+                img.onload = function () {
+                    if(img.width > img.height){
+                        imgObj.proportion = 'w'
+                    }else {
+                        imgObj.proportion = 'h'
+                    }
+                    imgObj.src = item
+                    that.swiperImg.push(imgObj)
+                }
+                img.src = item
+            })
+        },
+        methods: {
+            getUrlParam: function (paraName) {
+                var url = document.location.toString();
+                var arrObj = url.split("?");
+
+                if (arrObj.length > 1) {
+                    var arrPara = arrObj[1].split("&");
+                    var arr;
+
+                    for (var i = 0; i < arrPara.length; i++) {
+                        arr = arrPara[i].split("=");
+
+                        if (arr != null && arr[0] == paraName) {
+                            return arr[1];
+                        }
+                    }
+                    return "";
+                }
+                else {
+                    return "";
+                }
+            },
+            goBack: function () {
+                console.log(8888)
+                window.history.go(-1)
+            },
+            pay: function () {
+                if(this.mySpecs.id == '' || !this.mySpecs.id){
+                    this.$toast('请选择规格！');
+                }else {
+                    //发送数据
+                    console.log(this.mySpecs)
+                    console.log(this.num)
+                    window.location = './settLement.html?userId=' + this.userId + '&goodsId=' + this.goodsId + '&mySpecs=' + this.mySpecs + '&num=' + this.num
+                }
+            },
+            goSpecs: function () {
+                this.show = true
+            },
+            selectSpecs: function (index) {
+                this.nowIndex = index
+                this.mySpecs = this.specsObj.slice(index-1, index)[0]
+            }
+        },
+
+    })
+
+</script>
+</html>
+

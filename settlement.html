@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结算</title>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/tools.js?v=1.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.2/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.2/lib/vant.min.js"></script>
+    <script src="Scripts/vue-clipboard.min.js"></script>
+    <link rel="stylesheet" href="Scripts/base.css">
+    <link rel="stylesheet" href="Scripts/settlement.css">
+</head>
+<body>
+<div id="orderDetails">
+    <div class="addressInfo">
+        <img src="Scripts/images/icon/dingwei.png">
+        <div class="addressInfoRight" @click="changeAddress"  v-if="userAddress != ''">
+            <div class="addressInfoContent">
+                <div class="aTop">
+                    <van-tag type="primary">默认</van-tag>
+                    <span>{{userAddress}}</span>
+                </div>
+                <div class="aBottom">
+                    <span>{{userName}}</span>
+                    <span>{{userPhoneNumber}}</span>
+                </div>
+            </div>
+            <van-icon name="arrow" />
+        </div>
+        <div class="addressInfoRight"  @click="addAddress" v-if="userAddress == ''">
+            <div class="addressInfoContent">
+                <div class="blueAdd">请选择收货地址</div>
+            </div>
+            <van-icon name="arrow" />
+        </div>
+    </div>
+    <div class="orderCenter">
+        <p>科创商城</p>
+        <div class="goodsInfo">
+            <img :src="goodsImg">
+            <div class="goodsInfoRight">
+                <div>
+                    <p>{{goodsText}}</p>
+                    <p>产品颜色：{{goodsTypes}}</p>
+                </div>
+                <p>￥{{Number(goodsPrice).toFixed(2)}} <span class="old-price" v-show="goodsOldPrice && goodsOldPrice != ''">￥{{Number(goodsOldPrice).toFixed(2)}}</span></p>
+            </div>
+        </div>
+        <div class="coupon van-hairline--top">
+            <span>优惠券</span>
+            <span class="couponLen" v-show="couponNum !== 0 && discount == 0" @click="openPop">{{canUseCouponNum}}张可用<van-icon name="arrow" color="#979797" size="0.43rem" /></span>
+            <span class="couponNum" v-show="discount != 0" @click="openPop">-{{discount}}<van-icon name="arrow" color="#979797" size="0.43rem" /></span>
+            <span class="couponNum" v-show="couponNum == 0">无优惠券<van-icon name="arrow" color="#979797" size="0.43rem" /></span>
+        </div>
+    </div>
+    <van-radio-group v-model="radio">
+        <van-cell-group>
+            <van-cell title="单选框 1" clickable @click="radio = '5'">
+                <template slot="title">
+                    <img class="payIcon" src="Scripts/images/lfsq_card_paytreasure.png">
+                    <span class="custom-title">支付宝支付</span>
+                </template>
+                <van-radio slot="right-icon" name="5" />
+            </van-cell>
+            <van-cell title="单选框 2" clickable @click="radio = '6'">
+                <template slot="title">
+                    <img class="payIcon" src="Scripts/images/lfsq_card_wechat.png">
+                    <span class="custom-title">微信支付</span>
+                </template>
+                <van-radio slot="right-icon" name="6" />
+            </van-cell>
+        </van-cell-group>
+    </van-radio-group>
+    <div class="footer">
+        <div class="heji">
+            <span>合计：<span class="red-heji">￥{{Number(goodsPrice-discount).toFixed(2)}}</span></span>
+            <span class="footr-discounte" v-show="discount != 0">已优惠：￥{{Number(discount).toFixed(2)}}</span>
+        </div>
+        <button @click="gotoPay">立即支付</button>
+    </div>
+    <van-popup
+            v-model="show"
+            position="bottom"
+            :style="{ height: '14rem' }"
+            round
+    >
+        <p class="couponH">我的优惠券</p>
+        <ul class="coupon_box_content">
+            <li v-for="item in couponList" class="coupons" :class="(goodsId == 44 || goodsId == 38 || (goodsId == 37 && ( item.PrizeType == 1 ||  item.PrizeType == 2)) || (goodsId == 42 && item.PrizeType == 1)) ? 'activation' : 'notActivation'">
+                <div class="prizesListLeft"><span>￥<span class="couponsNum">{{item.FaceValue}}</span></span>
+                </div>
+                <div class="prizesListCenter"  v-if="item.PrizeType == 1">
+                    <p class="prizesListLeftTitle">优惠券</p>
+                    <p>限测距仪商品使用</p>
+                </div>
+                <div class="prizesListCenter" v-if="item.PrizeType == 2">
+                    <p class="prizesListLeftTitle">优惠券</p>
+                    <p>限60米蓝色测距仪使用</p>
+                    <p>限激光数显40米卷尺使用</p>
+                    <p>限激光数显60米卷尺使用</p>
+                    <div class="no-tips" v-if="goodsId != 37 && goodsId != 44  && goodsId != 38">
+                        <img src="./Scripts/images/lfsq_buy_choose_tips.png">
+                        <span>限用于指定商品</span>
+                    </div>
+                </div>
+                <div class="prizesListCenter"  v-if="item.PrizeType == 3">
+                    <p class="prizesListLeftTitle">优惠券</p>
+                    <p>限60米蓝色测距仪使用</p>
+                    <p>限激光数显60米卷尺使用</p>
+                    <div class="no-tips" v-if="goodsId != 44  && goodsId != 38">
+                        <img src="./Scripts/images/lfsq_buy_choose_tips.png">
+                        <span>限用于指定商品</span>
+                    </div>
+                </div>
+                <div class="coupons-right" @click="choseCoupon(item.Id, item.PrizeType, item)" v-if="(goodsId == 44 || goodsId == 38 || (goodsId == 37 && ( item.PrizeType == 1 ||  item.PrizeType == 2)) || (goodsId == 42 && item.PrizeType == 1))">
+                    <img class="pay-header-choose" :src="couponId == item.Id?'./Scripts/images/check-circle-fill.png':'./Scripts/images/xingzhuang-tuoyuanxing.png'" alt="">
+                </div>
+            </li>
+        </ul>
+        <button class="couponBtn" @click="closePop">确定</button>
+    </van-popup>
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#orderDetails',
+        data: function () {
+            return {
+                show: false,
+                goodsId: '',
+                userId: '',
+                radio: '5',
+                userName: '',
+                userPhoneNumber: '',
+                userAddress: '',
+                goodsImg: '',
+                goodsText: '',
+                goodsTypes: '',
+                goodsType: '',
+                goodsPrice: '',
+                goodsOldPrice: '',
+                couponList: [],
+                couponNum: 0,
+                canUseCouponNum: 0,
+                discount: 0,
+                couponId: '',
+                gotoPayFlag: true,
+                sendAddress: ''
+
+            }
+        },
+        created: function () {
+            this.goodsId = this.getUrlParam('goodsId')
+            this.userId = this.getUrlParam('userId')
+            this.sendAddress = this.getUrlParam('sendAddress')
+            var that = this
+            setTimeout(function () {
+                that.getInfo()
+                that.getAddress()
+                that.getCoupon()
+            },300)
+
+
+        },
+        mounted: function() {
+
+        },
+        methods: {
+            getUrlParam: function (paraName) {
+                var url = document.location.toString();
+                var arrObj = url.split("?");
+
+                if (arrObj.length > 1) {
+                    var arrPara = arrObj[1].split("&");
+                    var arr;
+
+                    for (var i = 0; i < arrPara.length; i++) {
+                        arr = arrPara[i].split("=");
+
+                        if (arr != null && arr[0] == paraName) {
+                            return arr[1];
+                        }
+                    }
+                    return "";
+                }
+                else {
+                    return "";
+                }
+            },
+            getInfo: function () {
+                var that = this
+                if(that.goodsId == ''){
+                    this.$toast.fail('获取商品ID失败');
+                }else {
+                    $.get("https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/orderGoods",{goodsId: that.goodsId},function (data) {
+                        that.goodsImg = data.data.img
+                        that.goodsText = data.data.text
+                        that.goodsTypes = data.data.types
+                        that.goodsType = data.data.type
+                        that.goodsPrice = data.data.price
+                        that.goodsOldPrice = data.data.oldPrice
+                    })
+                }
+
+            },
+            getCoupon: function () {
+                //请求优惠券数据
+                var that = this
+                $.post('https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/myCpopon', { userId: that.serId }, function (data) {
+                    if (data.State) {
+                        var myCoupon = data.Data.filter(function (item) {
+                            if(item.PrizeType == 1 || item.PrizeType == 2 || item.PrizeType == 3){
+                                return true
+                            }
+                        })
+                        that.couponNum = myCoupon.length
+                        myCoupon.forEach(function (item) {
+                            if(that.goodsId == 44 || that.goodsId == 38){
+                                that.canUseCouponNum ++
+                            }else if(that.goodsId == 37 && (item.PrizeType == 1 || item.PrizeType == 2)){
+                                that.canUseCouponNum ++
+                            }else if(that.goodsId == 42 && item.PrizeType == 1){
+                                that.canUseCouponNum ++
+                            }
+                        })
+                        that.couponList = myCoupon.sort(function (item, item2) {
+                            return item.PrizeType -item2.PrizeType
+                        })
+                    } else {
+                        this.$toast(data.Msg);
+                        // alert(data.Msg)
+                        //这里报错：输出：data.Msg
+                    }
+                })
+
+            },
+            choseCoupon: function (choseId, type ,i){
+                if(choseId == this.couponId){
+                    this.couponId = ''
+                    this.discount = ''
+                }else {
+                    console.log(type)
+                    this.couponId = choseId
+                    if(type == 1){
+                        this.discount = 88
+                    }
+                    if(type == 2){
+                        this.discount = 128
+                    }
+                    if(type == 3){
+                        this.discount = 168
+                    }
+                    console.log(i)
+                }
+            },
+            closePop: function (){
+                this.show = false
+            },
+            openPop: function (){
+                this.show = true
+            },
+            getAddress: function (){
+                var that = this
+                if(this.sendAddress){
+                    var sendAddress = JSON.parse(sessionStorage.getItem("sendAddress"))
+                    that.userName = sendAddress.name
+                    that.userPhoneNumber = sendAddress.tel
+                    that.userAddress = sendAddress.province + sendAddress.city + sendAddress.county
+                    // sessionStorage.removeItem("sendAddress")
+                }else{
+                    if(that.userId == ''){
+                        this.$toast.fail('获取用户ID失败');
+                    }else {
+                        $.get("https://www.fastmock.site/mock/3346ad31ebf63909b8c2c97da16bf7a3/shop/address",{userId: that.userId},function (data) {
+                            that.userName = data.data.userName
+                            that.userPhoneNumber = data.data.userPhoneNumber
+                            that.userAddress = data.data.userAddress
+                        })
+                    }
+                }
+
+            },
+            changeAddress: function () {
+                window.location = './addressList.html?userId=' + this.userId + '&goodsId=' + this.goodsId
+            },
+            addAddress: function () {
+                //添加地址
+                window.location = './addressList.html?userId=' + this.userId + '&goodsId=' + this.goodsId
+            },
+            //打开优惠券弹框
+            openCouponPop: function () {
+                console.log('打开优惠券弹框')
+            },
+            gotoPay: function () {
+                var that = this
+                if(that.gotoPayFlag){
+
+                }else {
+
+                }
+                console.log('立即支付')
+            }
+
+        }
+
+    })
+
+</script>
+</html>
+
+

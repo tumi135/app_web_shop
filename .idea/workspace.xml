@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c3fd25a5-8af0-4b4a-a1de-aa518fa04557" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>itemHeight</find>
+      <find>44</find>
+    </findStrings>
+  </component>
+  <component name="ProjectId" id="1RGbln1SAvMMw0Zp02LyXcUYEzs" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\kechuang\个人版商城" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3fd25a5-8af0-4b4a-a1de-aa518fa04557" name="Default Changelist" comment="" />
+      <created>1569296532045</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569296532045</updated>
+      <workItem from="1569296533191" duration="11153000" />
+      <workItem from="1569373787315" duration="24176000" />
+      <workItem from="1569459070597" duration="27924000" />
+      <workItem from="1569545826820" duration="5332000" />
+      <workItem from="1569557045131" duration="181000" />
+      <workItem from="1569563513049" duration="5304000" />
+      <workItem from="1569574706140" duration="1961000" />
+      <workItem from="1569721059307" duration="22089000" />
+      <workItem from="1569804930579" duration="22891000" />
+      <workItem from="1570086536229" duration="38000" />
+      <workItem from="1570086587658" duration="14352000" />
+      <workItem from="1570160116440" duration="9278000" />
+      <workItem from="1570238235763" duration="17860000" />
+      <workItem from="1570505344860" duration="14933000" />
+      <workItem from="1570522625729" duration="1291000" />
+      <workItem from="1570524915512" duration="2040000" />
+      <workItem from="1570603301831" duration="61000" />
+      <workItem from="1570671452617" duration="317000" />
+      <workItem from="1571278141445" duration="1998000" />
+      <workItem from="1571284994164" duration="625000" />
+      <workItem from="1571295148924" duration="616000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
